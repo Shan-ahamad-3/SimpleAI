@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Simple Chat</title>
+    <link rel="stylesheet" href="styles.css">
+
+  </head>
+  <body>
+    <main class="app" role="application" aria-label="Simple chat">
+      <header>
+        <h1>Simple Chat</h1>
+        <div style="flex:1"></div>
+        <div class="small">Offline demo</div>
+      </header>
+
+      <section id="messages" class="messages" aria-live="polite" aria-atomic="false">
+        <!-- messages go here -->
+      </section>
+
+      <form id="composer" class="composer" aria-label="Message composer">
+        <input id="input" type="text" placeholder="Type a message and press Enter" autocomplete="off" aria-label="Message input">
+        <div class="controls">
+            <button id="mic-btn">🎙️</button>
+          <button type="submit">Send</button>
+        </div>
+      </form>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
