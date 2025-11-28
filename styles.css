@@ -1,18 +1,249 @@
+/* Custom Properties for Dark/Futuristic Theme */
+:root {
+    --bg-dark: #1a1a2e; /* Deep dark background */
+    --panel-dark: #20203a; /* Slightly lighter for panels */
+    --accent-blue: #007bff; /* Bright blue for interactive elements */
+    --accent-purple: #9d52f2; /* Soft purple glow */
+    --text-light: #e0e0e0; /* Light text on dark background */
+    --text-muted: #8888a0; /* Muted text */
+    --border-dark: #3a3a5d; /* Darker, subtle borders */
+    --shadow-dark: rgba(0, 0, 0, 0.4);
+    --bubble-user: linear-gradient(135deg, #007bff, #0056b3); /* User message gradient */
+    --bubble-bot: #2c2c4a; /* Bot message solid */
+}
 
-      :root{--bg:#f7f7fb;--panel:#ffffff;--accent:#3b82f6;--muted:#6b7280}
-      html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:#111}
-      .app{max-width:720px;margin:28px auto;display:flex;flex-direction:column;height:80vh;box-shadow:0 6px 18px rgba(16,24,40,.08)}
-      header{background:linear-gradient(90deg,#fff 0,#f8fafc 100%);padding:14px 18px;border-bottom:1px solid #eef2f7;display:flex;align-items:center;gap:12px}
-      header h1{font-size:16px;margin:0}
-      .messages{flex:1;overflow:auto;padding:18px;display:flex;flex-direction:column;gap:12px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.02))}
-      .msg{max-width:78%;padding:10px 12px;border-radius:12px;line-height:1.35}
-      .user{align-self:flex-end;background:linear-gradient(180deg,#2563eb,#1e40af);color:#fff;border-bottom-right-radius:4px}
-      .bot{align-self:flex-start;background:var(--panel);border:1px solid #eef2f7;color:#061023}
-      .meta{font-size:12px;color:var(--muted);margin-bottom:6px}
-      .composer{display:flex;padding:12px;border-top:1px solid #eef2f7;background:var(--panel);gap:8px}
-      .composer input{flex:1;padding:10px 12px;border:1px solid #e6eef8;border-radius:10px;font-size:14px}
-      .composer button{background:var(--accent);color:#fff;padding:10px 14px;border-radius:10px;border:0;cursor:pointer}
-      .controls{display:flex;gap:8px;align-items:center}
-      .small{font-size:12px;color:var(--muted)}
-      .typing{font-style:italic;color:var(--muted)}
-      @media (max-width:520px){.app{height:88vh;margin:10px}}
+/* Global Styles */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Roboto', sans-serif; /* Modern, clean font */
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    overflow: hidden; /* Prevent body scroll if gradient causes it */
+}
+
+/* Futuristic Background Gradient */
+.main-gradient {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top left, var(--accent-purple) 0%, transparent 25%),
+                radial-gradient(circle at bottom right, var(--accent-blue) 0%, transparent 25%);
+    opacity: 0.15; /* Subtle effect */
+    z-index: -1; /* Behind everything */
+    filter: blur(80px); /* Soft blur for futuristic glow */
+}
+
+
+/* Main Application Container */
+.app {
+    max-width: 800px; /* Slightly wider */
+    margin: 4vh auto; /* Responsive vertical margin */
+    display: flex;
+    flex-direction: column;
+    height: 90vh; /* Takes up most of the viewport */
+    border-radius: 18px; /* Softer, modern corners */
+    overflow: hidden; /* Ensure inner content respects border-radius */
+    box-shadow: 0 10px 30px var(--shadow-dark); /* More pronounced shadow */
+    background-color: var(--panel-dark); /* Panel background */
+    backdrop-filter: blur(10px); /* Frosted glass effect for modern feel */
+    border: 1px solid var(--border-dark); /* Subtle border */
+}
+
+/* Header */
+header {
+    background: var(--panel-dark);
+    padding: 18px 25px; /* More padding */
+    border-bottom: 1px solid var(--border-dark);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-family: 'Poppins', sans-serif; /* Header font */
+}
+
+header h1 {
+    font-size: 20px; /* Larger header text */
+    margin: 0;
+    color: var(--text-light);
+    font-weight: 600;
+}
+
+.status-indicator {
+    font-size: 13px;
+    color: #4CAF50; /* Green for online */
+    background-color: rgba(76, 175, 80, 0.1);
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-weight: 500;
+}
+
+
+/* Messages Section */
+.messages {
+    flex: 1;
+    overflow-y: auto; /* Only y-axis scroll */
+    padding: 20px; /* More padding */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* More space between messages */
+    background: transparent; /* Transparent background to show main-gradient blur */
+}
+
+/* Custom Scrollbar for modern look */
+.messages::-webkit-scrollbar {
+    width: 8px;
+}
+
+.messages::-webkit-scrollbar-track {
+    background: var(--panel-dark);
+}
+
+.messages::-webkit-scrollbar-thumb {
+    background-color: var(--border-dark);
+    border-radius: 10px;
+    border: 2px solid var(--panel-dark);
+}
+
+
+/* Message Bubbles */
+.msg {
+    max-width: 75%; /* Slightly less wide */
+    padding: 12px 16px; /* More padding */
+    border-radius: 18px; /* More rounded corners */
+    line-height: 1.5; /* Better readability */
+    font-size: 15px;
+    box-shadow: 0 2px 8px var(--shadow-dark); /* Subtle shadow on bubbles */
+}
+
+.user {
+    align-self: flex-end;
+    background: var(--bubble-user); /* Gradient for user messages */
+    color: #fff;
+    border-bottom-right-radius: 6px; /* A slight different radius for edge */
+}
+
+.bot {
+    align-self: flex-start;
+    background-color: var(--bubble-bot); /* Solid dark for bot messages */
+    color: var(--text-light);
+    border: 1px solid var(--border-dark);
+    border-bottom-left-radius: 6px; /* A slight different radius for edge */
+}
+
+.meta {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+/* Composer (Input Area) */
+.composer {
+    display: flex;
+    padding: 15px 20px; /* More padding */
+    border-top: 1px solid var(--border-dark);
+    background: var(--panel-dark);
+    gap: 10px;
+    align-items: center; /* Vertically center items */
+}
+
+.composer input {
+    flex: 1;
+    padding: 12px 18px; /* More padding */
+    border: 1px solid var(--border-dark);
+    border-radius: 15px; /* More rounded input */
+    font-size: 15px;
+    background-color: var(--bg-dark); /* Darker input background */
+    color: var(--text-light);
+    outline: none; /* Remove default outline */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.composer input::placeholder {
+    color: var(--text-muted);
+    opacity: 0.7;
+}
+
+.composer input:focus {
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Glow effect on focus */
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.icon-button {
+    background: transparent;
+    border: none;
+    color: var(--text-light); /* Icon color */
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%; /* Circular button */
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.icon-button svg {
+    width: 24px; /* SVG icon size */
+    height: 24px;
+    color: var(--accent-blue); /* Color the mic icon */
+}
+
+.send-button {
+    background: var(--accent-blue);
+    color: #fff;
+    padding: 12px 20px; /* More padding for send button */
+    border-radius: 15px; /* More rounded */
+    border: 0;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.send-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-1px); /* Slight lift */
+}
+
+.send-button:active {
+    transform: translateY(0);
+}
+
+.typing {
+    font-style: italic;
+    color: var(--text-muted);
+    padding-left: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .app {
+        height: 95vh;
+        margin: 2.5vh auto;
+        border-radius: 0; /* Full width on smaller screens */
+    }
+    .composer {
+        padding: 10px 15px;
+    }
+    .composer input {
+        padding: 10px 14px;
+        font-size: 14px;
+    }
+    .send-button {
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+}
