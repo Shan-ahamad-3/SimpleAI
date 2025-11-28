@@ -3,27 +3,30 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Simple Chat</title>
+    <title>Simple AI Chat</title>
     <link rel="stylesheet" href="styles.css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@300;404&display=swap" rel="stylesheet">
   </head>
   <body>
-    <main class="app" role="application" aria-label="Simple chat">
+    <div class="main-gradient"></div> <main class="app" role="application" aria-label="Simple AI chat">
       <header>
-        <h1>Simple Chat</h1>
+        <h1>Simple AI</h1>
         <div style="flex:1"></div>
-        <div class="small">Offline demo</div>
-      </header>
+        <div class="status-indicator">Online</div> </header>
 
       <section id="messages" class="messages" aria-live="polite" aria-atomic="false">
-        <!-- messages go here -->
-      </section>
+        </section>
 
       <form id="composer" class="composer" aria-label="Message composer">
-        <input id="input" type="text" placeholder="Type a message and press Enter" autocomplete="off" aria-label="Message input">
+        <input id="input" type="text" placeholder="Type a message and press Enter..." autocomplete="off" aria-label="Message input">
         <div class="controls">
-            <button id="mic-btn">🎙️</button>
-          <button type="submit">Send</button>
+          <button id="mic-btn" class="icon-button" aria-label="Voice input">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+              <path d="M8.25 4.5a3.75 3.75 0 117.5 0v8.25a3.75 3.75 0 11-7.5 0V4.5z" />
+              <path d="M12.75 16.125A2.25 2.25 0 0115 13.875v-2.625a.75.75 0 00-1.5 0v2.625a.75.75 0 00-.75.75H12a.75.75 0 00-.75.75v.75a.75.75 0 00.75.75h.75a.75.75 0 00.75.75v.75a.75.75 0 00.75.75h-.75a2.25 2.25 0 01-2.25-2.25v-2.625a.75.75 0 00-1.5 0v2.625a2.25 2.25 0 012.25 2.25v.75c0 .414.336.75.75.75zm-3-4.875a.75.75 0 00-1.5 0v.75c0 .414.336.75.75.75h.75a.75.75 0 00.75-.75v-.75a.75.75 0 00-.75-.75zm6 0a.75.75 0 00-1.5 0v.75c0 .414.336.75.75.75h.75a.75.75 0 00.75-.75v-.75a.75.75 0 00-.75-.75z" />
+            </svg>
+          </button>
+          <button type="submit" class="send-button">Send</button>
         </div>
       </form>
     </main>
